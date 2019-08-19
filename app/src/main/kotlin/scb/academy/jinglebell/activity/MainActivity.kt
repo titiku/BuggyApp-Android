@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import scb.academy.jinglebell.R
+import scb.academy.jinglebell.RegisterFragment
 import scb.academy.jinglebell.fragment.CountryListFragment
 import scb.academy.jinglebell.fragment.SongListFragment
 
@@ -51,7 +52,8 @@ class MainActivity : AppCompatActivity() {
                 SongListFragment()
             }
 
-            R.id.action_profile -> { Fragment() }
+            R.id.action_profile -> {  if (currentFragment is RegisterFragment) return
+                RegisterFragment() }
 
             else -> return
         }

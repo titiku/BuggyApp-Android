@@ -23,15 +23,14 @@ class SongAdapter(private val listener: OnSongClickListener)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = SongItemViewHolder(parent)
 
     override fun onBindViewHolder(holder: SongItemViewHolder, position: Int) {
-        holder.bind(_songs[position], listener)
+
+            holder.bind(_songs[position], listener)
+
+
     }
 
     override fun getItemCount(): Int {
-        return if (songs.count() == 0) {
-            0
-        } else {
-            songs.count() + 1
-        }
+        return songs.count()
     }
 
     fun submitList(list: List<Song>) {
@@ -56,11 +55,14 @@ class SongItemViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
         tvSongPrice.text = "${song.price} ${song.priceCurrency}"
         ivSongArtwork.setImageUrl(song.artworkUrl)
 
-        itemView.setOnClickListener { listener.onSongClick(song) }
+        itemView.setOnClickListener {
+            listener.onSongClick(song)
+        }
     }
 
 }
 
 interface OnSongClickListener {
+
     fun onSongClick(song: Song)
 }
