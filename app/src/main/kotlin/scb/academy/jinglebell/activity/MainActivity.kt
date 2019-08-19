@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         return@OnNavigationItemSelectedListener when (item.itemId) {
             R.id.action_country_list, R.id.action_song, R.id.action_profile -> {
+
                 changeFragment(item.itemId)
                 true
             }
@@ -31,6 +32,9 @@ class MainActivity : AppCompatActivity() {
         bnvNavigation = findViewById(R.id.bnv_navigation)
 
         bnvNavigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        bnvNavigation.getMenu().getItem(0).setIcon(R.drawable.ic_country);
+        bnvNavigation.getMenu().getItem(1).setIcon(R.drawable.ic_song);
+        bnvNavigation.getMenu().getItem(2).setIcon(R.drawable.ic_profile);
 
         val fragment = supportFragmentManager.findFragmentById(R.id.container)
         if (fragment == null) {
